@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FNJSFVPRM6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-FNJSFVPRM6');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>París Exprés — Jany Dávila ✦</title>
@@ -1062,6 +1070,23 @@ function openImgModal(el){
   document.getElementById('IMGMODAL_IMG').alt=el.alt;
   document.getElementById('IMGMODAL').classList.add('open');
 }
+</script>
+<script>
+document.addEventListener('click', function(e){
+  const link = e.target.closest('a.lb-m, a.lb-t');
+  if(!link) return;
+  const stop = link.closest('.stop');
+  const nameEl = stop ? stop.querySelector('.stop-name') : null;
+  const placeName = nameEl ? nameEl.textContent.trim() : link.textContent.trim();
+  const linkType = link.classList.contains('lb-m') ? 'maps' : 'ticket';
+  if (typeof gtag === 'function') {
+    gtag('event', 'click_link', {
+      link_type: linkType,
+      place_name: placeName,
+      link_url: link.href
+    });
+  }
+});
 </script>
 </body>
 </html>
